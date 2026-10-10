@@ -286,18 +286,38 @@ la implementación del sistema.
 
 ## 10. Archivos de la Semana 3
 
-Los archivos técnicos del proyecto se encuentran organizados
-en las siguientes carpetas:
+Los archivos técnicos desarrollados durante la Semana 3
+se encuentran organizados en el repositorio de GitHub.
 
 ### Base de datos
 
-[Script SQL de AquaAlerta](base_datos/AcuaAlerta_BaseDatos_Actualizada.sql)
+Se desarrolló la estructura relacional de la base de datos
+AcuaAlerta utilizando Microsoft SQL Server.
 
-### Diagramas
+El script contiene las seis tablas principales, sus claves
+primarias, claves foráneas y restricciones.
 
-[Diagrama UML editable](diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
+**Archivo SQL:**
 
-[Diagrama UML en PNG](diagramas/AquaAlerta_Diagrama_Clases_UML.png)
+[Ver script SQL de AcuaAlerta](Base%20de%20datos%20AquaAlerta/AcuaAlerta_BaseDatos.sql)
+
+### Diagramas UML
+
+Se elaboró el diagrama de clases UML, que representa
+las seis clases principales del sistema, sus atributos,
+métodos y relaciones.
+
+**Archivo editable de Draw.io:**
+
+[Ver diagrama UML editable](Diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
+
+**Imagen del diagrama UML:**
+
+[Ver diagrama UML en PNG](Diagramas/AquaAlerta_Diagrama_Clases_UML.drawio.png)
+
+### Visualización del diagrama
+
+![Diagrama de clases UML de AquaAlerta](Diagramas/AquaAlerta_Diagrama_Clases_UML.drawio.png)
 
 ## 11. Herramientas Utilizadas
 
