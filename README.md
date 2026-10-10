@@ -145,3 +145,207 @@ Durante esta etapa se está recopilando información de los habitantes de la com
 **Docente:** Francisco Daniel Peñate Mena  
 **Equipo:** 2  
 **Ciclo:** 02-2026
+
+---
+
+# Semana 3: Diseño de Clases UML y Modelado de Base de Datos
+
+## 1. Introducción
+
+Durante la tercera semana del proyecto AquaAlerta, el Equipo 02
+desarrolló el diseño de clases UML y el modelo relacional de la
+base de datos.
+
+Esta etapa tiene como objetivo establecer la estructura del sistema
+mediante los principios de Programación Orientada a Objetos (POO)
+y el diseño de una base de datos relacional en SQL Server.
+
+Los avances permitirán continuar con la implementación de una
+plataforma comunitaria para registrar y dar seguimiento a
+problemas relacionados con la calidad y el servicio de agua.
+
+## 2. Objetivos de la Semana 3
+
+- Revisar los requisitos funcionales y no funcionales.
+- Identificar las clases principales del sistema.
+- Definir atributos, métodos y relaciones.
+- Aplicar los principios de Programación Orientada a Objetos.
+- Elaborar el diagrama de clases UML.
+- Diseñar el modelo relacional de la base de datos.
+- Establecer claves primarias y foráneas.
+- Elaborar el diccionario de datos.
+- Relacionar las clases UML con las tablas SQL.
+
+## 3. Diseño de Clases UML
+
+Se identificaron seis clases principales:
+
+| Clase | Descripción |
+|---|---|
+| Usuario | Gestiona la información de los usuarios y sus roles. |
+| Categoria | Clasifica los problemas relacionados con el agua. |
+| Ubicacion | Almacena la información geográfica de los reportes. |
+| ReporteAgua | Gestiona los reportes realizados por los habitantes. |
+| Evidencia | Administra las evidencias asociadas a los reportes. |
+| Seguimiento | Registra las observaciones y actualizaciones. |
+
+### Diagrama de clases
+
+El diagrama UML representa los atributos, métodos y relaciones
+entre las seis clases principales.
+
+![Diagrama de clases UML de AquaAlerta](diagramas/AquaAlerta_Diagrama_Clases_UML.png)
+
+Archivo editable:
+[Diagrama UML en Draw.io](diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
+
+## 4. Aplicación de Programación Orientada a Objetos
+
+En el diseño del sistema se aplicaron los siguientes conceptos:
+
+- **Clases:** Representan los componentes principales del sistema.
+- **Objetos:** Instancias de las clases con información específica.
+- **Atributos:** Definen las características de cada clase.
+- **Métodos:** Representan las operaciones del sistema.
+- **Encapsulamiento:** Permite proteger información sensible.
+- **Abstracción:** Identifica las características esenciales.
+- **Asociación:** Establece relaciones entre las clases.
+
+La herencia y el polimorfismo no fueron necesarios para
+la estructura inicial del proyecto.
+
+## 5. Modelo Relacional de la Base de Datos
+
+Se diseñó la base de datos AcuaAlerta utilizando
+Microsoft SQL Server.
+
+### Tablas principales
+
+1. Usuario
+2. Categoria
+3. Ubicacion
+4. ReporteAgua
+5. Evidencia
+6. Seguimiento
+
+### Relaciones
+
+Se definieron seis claves foráneas:
+
+| Tabla de origen | Tabla relacionada |
+|---|---|
+| ReporteAgua | Usuario |
+| ReporteAgua | Categoria |
+| ReporteAgua | Ubicacion |
+| Evidencia | ReporteAgua |
+| Seguimiento | ReporteAgua |
+| Seguimiento | Usuario |
+
+Estas relaciones permiten mantener la integridad
+referencial de la información almacenada.
+
+## 6. Categorías de Reportes
+
+El sistema contempla nueve categorías:
+
+1. Agua turbia.
+2. Mal olor.
+3. Sedimentos.
+4. Posible contaminación.
+5. Coloración anormal.
+6. Falta de agua.
+7. Baja presión.
+8. Fugas de agua.
+9. Tuberías dañadas.
+
+## 7. Estados de los Reportes
+
+Los estados definidos son:
+
+- **Pendiente:** El reporte fue registrado.
+- **En revisión:** El problema está siendo evaluado.
+- **Atendido:** Se registró la atención del reporte.
+
+## 8. Roles de Usuario
+
+Se establecieron tres roles:
+
+- **Habitante:** Registra y consulta reportes.
+- **Representante comunitario:** Participa en el seguimiento.
+- **Administrador:** Gestiona la información del sistema.
+
+## 9. Diccionario de Datos
+
+Se elaboró un diccionario de datos que describe los campos,
+tipos de datos, claves primarias, claves foráneas y
+restricciones de las seis tablas.
+
+Esta documentación facilita la comprensión de la estructura
+de la base de datos y servirá como referencia durante
+la implementación del sistema.
+
+## 10. Archivos de la Semana 3
+
+Los archivos técnicos del proyecto se encuentran organizados
+en las siguientes carpetas:
+
+### Base de datos
+
+[Script SQL de AquaAlerta](base_datos/AcuaAlerta_BaseDatos_Actualizada.sql)
+
+### Diagramas
+
+[Diagrama UML editable](diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
+
+[Diagrama UML en PNG](diagramas/AquaAlerta_Diagrama_Clases_UML.png)
+
+## 11. Herramientas Utilizadas
+
+- Microsoft SQL Server.
+- SQL Server Management Studio.
+- Draw.io (diagrams.net).
+- Google Docs.
+- Google Drive.
+- GitHub.
+
+## 12. Integrantes del Equipo
+
+**Universidad Dr. Andrés Bello**
+
+**Carrera:** Ingeniería en Sistemas y Computación
+
+**Proyecto:** AquaAlerta
+
+**Equipo:** 02
+
+**Integrantes:**
+
+- Manuel Ernesto Quijada Gutiérrez.
+- Marjhory Odalis Álvarez Cortez.
+- Leidy Elizabeth Landaverde Alas.
+- René Vladimir Quintanilla Mancia.
+
+## 13. Resultados de la Semana 3
+
+Durante esta etapa se completaron:
+
+- La identificación de las seis clases principales.
+- El diseño del diagrama de clases UML.
+- El diseño de las seis tablas de la base de datos.
+- La definición de seis claves foráneas.
+- La incorporación de roles de usuario.
+- La definición de nueve categorías de reportes.
+- La unificación de los estados del sistema.
+- La elaboración del diccionario de datos.
+- La correspondencia entre clases UML y tablas SQL.
+
+## 14. Próximas Etapas
+
+En las siguientes fases se continuará con la implementación
+de las funcionalidades de AquaAlerta, utilizando como base
+el diseño UML y la estructura relacional desarrollados
+durante esta semana.
+
+El objetivo es avanzar hacia una aplicación que permita
+registrar, consultar, localizar y dar seguimiento a los
+problemas relacionados con el agua en la comunidad.
