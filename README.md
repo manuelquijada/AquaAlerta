@@ -194,10 +194,9 @@ Se identificaron seis clases principales:
 El diagrama UML representa los atributos, métodos y relaciones
 entre las seis clases principales.
 
-![Diagrama de clases UML de AquaAlerta](diagramas/AquaAlerta_Diagrama_Clases_UML.png)
+![Diagrama de clases UML de AquaAlerta](Diagramas/AquaAlerta_Diagrama_Clases_UML.drawio.png)
 
-Archivo editable:
-[Diagrama UML en Draw.io](diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
+[Diagrama UML en Draw.io](Diagramas/AquaAlerta_Diagrama_Clases_UML.drawio)
 
 ## 4. Aplicación de Programación Orientada a Objetos
 
