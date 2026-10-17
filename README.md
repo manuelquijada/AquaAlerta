@@ -383,3 +383,83 @@ durante esta semana.
 El objetivo es avanzar hacia una aplicación que permita
 registrar, consultar, localizar y dar seguimiento a los
 problemas relacionados con el agua en la comunidad.
+
+
+
+# Semana 4: Implementación del Prototipo con Django
+
+## 15. Desarrollo de AquaAlerta
+
+Durante la cuarta semana se inició la implementación funcional de AquaAlerta mediante Python y el framework Django.
+
+Se desarrolló una aplicación web orientada al registro y seguimiento de incidencias relacionadas con la calidad y el suministro de agua en la comunidad.
+
+## 16. Tecnologías utilizadas
+
+- Python 3.14
+- Django 6.1.2
+- HTML5 y CSS3
+- SQLite para las pruebas locales
+- Git y GitHub para el control de versiones
+- SQL Server para el diseño relacional realizado anteriormente
+
+## 17. Programación Orientada a Objetos
+
+Se implementaron tres modelos principales:
+
+- ReporteAgua: clase principal con los atributos comunes.
+- ReporteCalidadAgua: clase derivada para incidencias de calidad.
+- ReporteServicioAgua: clase derivada para problemas del suministro.
+
+Se aplicaron los conceptos de herencia y polimorfismo mediante el método obtener_tipo_reporte(), que presenta un comportamiento diferente según el tipo de reporte.
+
+## 18. Funcionalidades implementadas
+
+- Administración de reportes mediante Django Admin.
+- Registro de incidencias de calidad del agua.
+- Registro de problemas del suministro.
+- Clasificación de reportes por prioridad.
+- Página principal con diseño adaptable.
+- Visualización automática de estadísticas de reportes.
+- Configuración del administrador en español.
+- Pruebas de funcionamiento de herencia y polimorfismo.
+
+## 19. Ejecución del proyecto
+
+Para ejecutar AquaAlerta localmente:
+
+1. Clonar el repositorio.
+2. Crear y activar un entorno virtual de Python.
+3. Instalar las dependencias con:
+
+    pip install -r requirements.txt
+
+4. Aplicar las migraciones:
+
+    python manage.py migrate
+
+5. Crear un usuario administrador:
+
+    python manage.py createsuperuser
+
+6. Iniciar el servidor:
+
+    python manage.py runserver
+
+7. Abrir en el navegador:
+
+    http://127.0.0.1:8000/
+
+El panel administrativo está disponible en:
+
+    http://127.0.0.1:8000/admin/
+
+## 20. Resultados de la Semana 4
+
+Se obtuvo un prototipo funcional de AquaAlerta que permite administrar incidencias y consultar estadísticas desde una interfaz web.
+
+Se registraron dos incidencias de prueba: una relacionada con la calidad del agua y otra con la interrupción del suministro.
+
+El código fuente fue integrado al repositorio de GitHub, conservando los diagramas UML, la documentación y el diseño de base de datos de las semanas anteriores.
+
+Nota: actualmente el prototipo Django utiliza SQLite para las pruebas locales. La integración directa con la base de datos SQL Server queda pendiente para una etapa posterior.
