@@ -189,6 +189,21 @@ Se identificaron seis clases principales:
 | Evidencia | Administra las evidencias asociadas a los reportes. |
 | Seguimiento | Registra las observaciones y actualizaciones. |
 
+### Actualización del diseño UML: prioridad, herencia y polimorfismo
+
+Se actualizó la clase `ReporteAgua` incorporando el atributo `prioridad`, que permite clasificar los reportes en tres niveles: Alta, Media y Baja.
+
+Además, se incorporaron dos clases derivadas de `ReporteAgua`:
+
+- **ReporteCalidadAgua:** representa los reportes relacionados con la contaminación, apariencia y olor del agua.
+- **ReporteServicioAgua:** representa los reportes relacionados con interrupciones del suministro, tuberías dañadas y otros problemas del servicio.
+
+Estas clases permiten aplicar el concepto de **herencia**, aprovechando los atributos y métodos comunes de `ReporteAgua`.
+
+También se planificó el uso del **polimorfismo** mediante el método `obtener_tipo_reporte()`, que tendrá un comportamiento diferente según el tipo de reporte.
+
+Las seis clases principales se mantienen y se complementan con las dos clases derivadas.
+
 ### Diagrama de clases
 
 El diagrama UML representa los atributos, métodos y relaciones
