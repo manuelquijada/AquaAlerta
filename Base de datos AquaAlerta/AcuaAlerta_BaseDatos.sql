@@ -73,6 +73,9 @@ CREATE TABLE ReporteAgua (
     fecha_reporte DATETIME2 NOT NULL DEFAULT SYSDATETIME(),
     estado VARCHAR(20) NOT NULL DEFAULT 'Pendiente',
 
+    prioridad VARCHAR(10) NOT NULL
+        CONSTRAINT DF_ReporteAgua_Prioridad DEFAULT 'Media',
+
     CONSTRAINT FK_Reporte_Usuario
         FOREIGN KEY (id_usuario)
         REFERENCES Usuario(id_usuario),
@@ -82,7 +85,10 @@ CREATE TABLE ReporteAgua (
         REFERENCES Categoria(id_categoria),
 
     CONSTRAINT CK_Reporte_Estado
-        CHECK (estado IN ('Pendiente', 'En proceso', 'Resuelto'))
+        CHECK (estado IN ('Pendiente', 'En proceso', 'Resuelto')),
+
+    CONSTRAINT CK_ReporteAgua_Prioridad
+        CHECK (prioridad IN ('Alta', 'Media', 'Baja'))
 );
 GO
 
