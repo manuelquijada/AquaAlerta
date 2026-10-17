@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaAlerta | Agua Alerta Comunitaria</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f0f8fc;
+            color: #173b52;
+        }
+
+        header {
+            background: #087da4;
+            color: white;
+            padding: 22px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 18px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 75px 20px;
+            background: linear-gradient(135deg, #087da4, #27b6cf);
+            color: white;
+        }
+
+        .hero h2 {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            max-width: 650px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        .contenedor {
+            max-width: 1050px;
+            margin: 45px auto;
+            padding: 0 20px;
+        }
+
+        .tarjetas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .tarjeta {
+            background: white;
+            padding: 30px;
+            border-radius: 14px;
+            text-align: center;
+            box-shadow: 0 4px 15px #00000012;
+        }
+
+        .tarjeta h3 {
+            color: #087da4;
+        }
+
+        .numero {
+            font-size: 42px;
+            font-weight: bold;
+            color: #0b91b4;
+        }
+
+        .boton {
+            display: inline-block;
+            background: #087da4;
+            color: white;
+            padding: 14px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            margin-top: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #173b52;
+            color: white;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>💧 AquaAlerta</h1>
+        <nav>
+            <a href="/">Inicio</a>
+            <a href="/admin/">Administración</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Agua Alerta Comunitaria</h2>
+        <p>
+            Plataforma comunitaria para registrar y dar seguimiento
+            a problemas relacionados con la calidad del agua,
+            el suministro y la infraestructura.
+        </p>
+    </section>
+
+    <main class="contenedor">
+        <h2>Panel de reportes comunitarios</h2>
+        <p>Resumen de las incidencias registradas en AquaAlerta.</p>
+
+        <div class="tarjetas">
+            <div class="tarjeta">
+                <h3>Total de reportes</h3>
+                <div class="numero">{{ total_reportes }}</div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Calidad del agua</h3>
+                <div class="numero">{{ total_calidad }}</div>
+            </div>
+
+            <div class="tarjeta">
+                <h3>Servicio de agua</h3>
+                <div class="numero">{{ total_servicio }}</div>
+            </div>
+        </div>
+
+        <a class="boton" href="/admin/">
+            Gestionar reportes
+        </a>
+    </main>
+
+    <footer>
+        AquaAlerta © 2026 | Proyecto académico - Equipo 02
+    </footer>
+
+</body>
+
+</html>
