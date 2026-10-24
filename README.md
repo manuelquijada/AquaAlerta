@@ -582,3 +582,9 @@ La implementación inicial de modelos, relaciones y migraciones se encuentra des
 El proyecto continuará incorporando pruebas, mejoras y funcionalidades de acuerdo con las siguientes etapas de desarrollo de AquaAlerta.
 
 ---
+
+Verificación de la Semana 5
+
+Durante esta semana se verificó la estructura del proyecto Django, incluyendo las aplicaciones usuarios y reportes. También se revisaron los modelos, sus relaciones y las migraciones utilizadas para trabajar con Microsoft SQL Server.
+
+Se comprobó que Django Admin permite administrar los registros del sistema y que la información puede consultarse desde la base de datos.
