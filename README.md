@@ -463,3 +463,122 @@ Se registraron dos incidencias de prueba: una relacionada con la calidad del agu
 El código fuente fue integrado al repositorio de GitHub, conservando los diagramas UML, la documentación y el diseño de base de datos de las semanas anteriores.
 
 Nota: actualmente el prototipo Django utiliza SQLite para las pruebas locales. La integración directa con la base de datos SQL Server queda pendiente para una etapa posterior.
+---
+
+## Semana 5 – Implementación de modelos, relaciones y migraciones en Django
+
+### Objetivo
+
+Implementar las clases principales de AquaAlerta mediante modelos de Django, establecer las relaciones entre las entidades y verificar la creación y funcionamiento de las tablas correspondientes en Microsoft SQL Server.
+
+### Organización del proyecto
+
+El proyecto está desarrollado en Python utilizando el framework Django y se encuentra organizado en las siguientes aplicaciones:
+
+- **config:** configuración general del proyecto y conexión con SQL Server.
+- **usuarios:** administración de perfiles y datos relacionados con los usuarios.
+- **reportes:** gestión de reportes de agua, categorías, ubicaciones, evidencias y seguimientos.
+
+Esta separación permite organizar las responsabilidades del sistema y facilitar su mantenimiento.
+
+### Modelos implementados
+
+En AquaAlerta se implementaron los siguientes modelos:
+
+| Modelo | Descripción |
+|---|---|
+| ReporteAgua | Almacena la información general de los problemas reportados. |
+| ReporteCalidadAgua | Representa reportes relacionados con la calidad del agua. |
+| ReporteServicioAgua | Representa problemas de suministro y servicio de agua. |
+| Categoria | Clasifica los diferentes problemas relacionados con el agua. |
+| Ubicacion | Registra la comunidad, sector y referencia del problema. |
+| Evidencia | Permite asociar archivos y fotografías a los reportes. |
+| Seguimiento | Registra observaciones relacionadas con los reportes. |
+| PerfilUsuario | Complementa la información de los usuarios del sistema. |
+
+Los modelos incorporan atributos con tipos de datos apropiados, métodos `__str__()` y métodos propios relacionados con su comportamiento.
+
+### Aplicación de Programación Orientada a Objetos
+
+En el desarrollo de AquaAlerta se aplicaron conceptos de Programación Orientada a Objetos:
+
+**Herencia:** los modelos `ReporteCalidadAgua` y `ReporteServicioAgua` heredan de `ReporteAgua`, reutilizando sus atributos y comportamientos generales.
+
+**Polimorfismo:** los modelos especializados implementan su propia versión del método `obtener_tipo_reporte()`, permitiendo identificar el tipo de reporte.
+
+**Encapsulamiento:** los modelos organizan sus atributos y métodos para representar de forma estructurada las responsabilidades de cada entidad.
+
+### Relaciones entre modelos
+
+Se establecieron relaciones mediante campos de Django como `ForeignKey`, permitiendo asociar:
+
+- Usuarios con reportes.
+- Categorías con reportes.
+- Ubicaciones con reportes.
+- Reportes con evidencias.
+- Reportes con seguimientos.
+- Usuarios con seguimientos.
+
+Estas relaciones permiten mantener organizada la información y garantizar la integridad referencial.
+
+### Integración con Microsoft SQL Server
+
+AquaAlerta utiliza Microsoft SQL Server como sistema de gestión de bases de datos.
+
+La integración con Django se realizó mediante `mssql-django` y `pyodbc`, utilizando el controlador ODBC Driver 18 for SQL Server.
+
+Se configuró la conexión en `config/settings.py` y se aplicaron las migraciones correspondientes para crear y actualizar las tablas del sistema.
+
+### Migraciones de Django
+
+Para generar y aplicar las migraciones se utilizaron los comandos:
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+```
+
+La aplicación de las migraciones permitió actualizar la estructura de la base de datos SQL Server conforme a los modelos definidos.
+
+### Administración y pruebas
+
+Los modelos fueron registrados en el panel administrativo de Django para facilitar la administración de la información.
+
+Se realizaron pruebas de registro y consulta de datos mediante Django Admin y SQL Server Management Studio.
+
+Entre las verificaciones realizadas se encuentran:
+
+- Registro de una ubicación desde Django Admin.
+- Consulta de la ubicación almacenada en SQL Server.
+- Asociación de un reporte con su usuario, categoría y ubicación.
+- Verificación de relaciones mediante una consulta SQL con `JOIN`.
+
+Las pruebas adicionales de evidencias y seguimientos se documentarán cuando hayan sido completadas.
+
+### Instalación de dependencias
+
+Para instalar las dependencias del proyecto se utiliza:
+
+```bash
+pip install -r requirements.txt
+```
+
+Para iniciar el servidor de desarrollo:
+
+```bash
+python manage.py runserver
+```
+
+### Trabajo colaborativo
+
+El desarrollo del proyecto se organiza mediante GitHub, permitiendo que cada integrante registre sus contribuciones a través de commits individuales.
+
+Durante la Semana 5 se documentan los avances relacionados con modelos, relaciones, migraciones, administración y pruebas de integración.
+
+### Estado del proyecto
+
+La implementación inicial de modelos, relaciones y migraciones se encuentra desarrollada y conectada con SQL Server.
+
+El proyecto continuará incorporando pruebas, mejoras y funcionalidades de acuerdo con las siguientes etapas de desarrollo de AquaAlerta.
+
+---
