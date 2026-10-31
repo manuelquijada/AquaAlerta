@@ -1,0 +1,119 @@
+AquaAlerta
+Semana 6 — Documentación de vistas, URLs y navegación
+
+Proyecto: AquaAlerta — Sistema comunitario de reportes de agua  
+Equipo: Grupo 02  
+Actividad: Documentación de interfaz gráfica y navegación
+
+INTRODUCCIÓN
+
+Durante la Semana 6 se implementaron vistas, rutas y plantillas HTML para facilitar la interacción de los usuarios con AquaAlerta.
+
+El sistema utiliza Django para procesar las solicitudes y Bootstrap para presentar una interfaz organizada y adaptable.
+
+VISTAS IMPLEMENTADAS
+
+Vista de inicio
+
+Presenta la página principal de AquaAlerta y muestra información general sobre los reportes registrados.
+
+Vista de listado
+
+Permite consultar los reportes comunitarios mediante una tabla que organiza sus principales características.
+
+Vista de creación de reportes de calidad
+
+Presenta un formulario para registrar problemas relacionados con la calidad del agua, incluyendo contaminación, apariencia y olor.
+
+Vista de creación de reportes de servicio
+
+Presenta un formulario para registrar interrupciones y otros problemas relacionados con el suministro de agua.
+
+Vista de edición
+
+Permite modificar información de un reporte existente mediante un formulario.
+
+El acceso está restringido a usuarios administrativos mediante el decorador `staff_member_required`.
+
+
+
+
+
+Vista de eliminación
+
+Muestra una pantalla de confirmación antes de eliminar un reporte.
+
+La eliminación se realiza mediante una solicitud POST.
+
+RUTAS CONFIGURADAS
+
+RUTA
+FUSION
+/
+Página principal
+/reportes/
+Listado de reportes 
+/reportes/nuevo/calidad/
+Registrar problemas de calidad
+/reportes/nuevo/servicio
+Registrar problemas de suministro
+/reportes/editar/<id>/
+Modificar un reporte 
+/reportes/eliminar/<id>/
+Confirmar y eliminar un reporte 
+/admin/
+Administración de Django
+
+
+
+
+PLANTILLAS HTML
+
+El sistema cuenta con las siguientes plantillas:
+
+base.html: Contiene la estructura principal de la interfaz y el menú de navegación.
+
+inicio.html: Presenta la página principal del sistema.
+
+lista_reportes.html: Muestra los reportes en una tabla.
+
+formulario_reporte.html: Permite registrar y modificar reportes mediante formularios.
+
+confirmar_eliminacion.html: Solicita confirmación antes de eliminar información.
+
+
+
+
+
+
+
+
+
+INTERFAZ GRÁFICA
+
+Se utilizó Bootstrap para organizar los elementos visuales de AquaAlerta.
+
+Entre los componentes implementados se encuentran:
+
+- Barra de navegación.
+- Tablas de reportes.
+- Formularios de registro.
+- Botones de edición y eliminación.
+- Etiquetas de colores para estados y prioridades.
+- Pantalla de confirmación de eliminación.
+
+La interfaz utiliza una combinación de tonos azules y elementos relacionados con el agua, manteniendo una presentación coherente con el propósito del proyecto.
+
+NAVEGACIÓN DEL SISTEMA
+
+Desde la página principal, los usuarios pueden acceder al listado de reportes y a los formularios de registro.
+
+En el listado, los usuarios administrativos pueden utilizar las opciones Editar y Eliminar.
+
+La sección Administración permite acceder al panel administrativo de Django.
+
+CONCLUSIÓN
+
+La implementación de vistas, rutas y plantillas permitió construir una interfaz funcional para AquaAlerta.
+
+La navegación facilita el acceso a las principales operaciones del sistema y establece una estructura que podrá ampliarse durante las siguientes semanas de desarrollo.
