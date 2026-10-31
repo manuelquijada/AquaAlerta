@@ -1,0 +1,83 @@
+AquaAlerta
+Semana 6 —Pruebas de funcionamiento del CRUD
+
+Proyecto: AquaAlerta — Sistema comunitario de reportes de agua  
+Equipo: Grupo 02  
+Actividad: Verificación de operaciones CRUD
+
+Introducción
+
+Durante la Semana 6 se desarrollaron y probaron las operaciones CRUD del sistema AquaAlerta, utilizando Django y una interfaz gráfica basada en Bootstrap.
+
+Estas operaciones permiten registrar, consultar, modificar y eliminar reportes relacionados con problemas de calidad y suministro de agua.
+
+2. Pruebas realizadas
+
+Prueba 1: CREATE — Crear reportes
+
+Se registró un reporte de interrupción del suministro de agua mediante el formulario correspondiente.
+
+Datos utilizados:
+- Título: Interrupción del suministro de agua.
+- Categoría: Falta de agua.
+- Ubicación: El Cóbano, centro.
+- Prioridad: Alta.
+
+Resultado: El reporte se registró y apareció en el listado con el identificador 2.
+
+Evidencia: Captura 05 — Registro CREATE.
+
+
+Prueba 2: READ — Consultar reportes
+
+Se ingresó a la sección de reportes comunitarios para consultar la información registrada.
+
+El listado permite visualizar el identificador, título, categoría, ubicación, estado, prioridad y fecha de cada reporte.
+
+Resultado: Los reportes registrados se mostraron correctamente en una tabla.
+
+Evidencia: Captura 02 — Listado de reportes.
+
+
+
+Prueba 3: UPDATE — Modificar reportes
+
+Se utilizó el botón Editar del reporte número 2.
+
+Se modificó su estado de Pendiente a en proceso, conservando los demás datos.
+
+Resultado: El sistema guardó el cambio y mostró el nuevo estado en el listado.
+
+Evidencia: Captura 06 — Modificación UPDATE.
+
+
+Prueba 4: DELETE — Eliminar reportes
+
+Se seleccionó el botón Eliminar del reporte número 2.
+
+El sistema mostró una pantalla de confirmación con el identificador, título y estado del reporte.
+
+Después de confirmar la operación, se regresó al listado de reportes.
+
+Resultado: El reporte número 2 dejó de aparecer, mientras que el reporte número 1 permaneció registrado.
+
+Evidencias:
+- Captura 07A — Confirmación de eliminación.
+
+- Captura 07B — Listado después de eliminar.
+
+
+3. Resultados generales
+
+Las pruebas realizadas permitieron verificar el funcionamiento de las cuatro operaciones CRUD.
+
+También se comprobó que las opciones de edición y eliminación se muestran a usuarios administrativos y que la eliminación requiere confirmación.
+
+4. Conclusión
+
+Las pruebas realizadas muestran que AquaAlerta permite administrar reportes comunitarios mediante una interfaz web.
+
+El funcionamiento del CRUD constituye un avance importante para el desarrollo de la plataforma y proporciona una base para incorporar nuevas funcionalidades en las siguientes etapas.
+
+
+
