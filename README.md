@@ -588,3 +588,165 @@ Verificación de la Semana 5
 Durante esta semana se verificó la estructura del proyecto Django, incluyendo las aplicaciones usuarios y reportes. También se revisaron los modelos, sus relaciones y las migraciones utilizadas para trabajar con Microsoft SQL Server.
 
 Se comprobó que Django Admin permite administrar los registros del sistema y que la información puede consultarse desde la base de datos.
+
+
+# Semana 6 — Desarrollo de vistas, URLs, plantillas e interfaz gráfica
+
+## 1. Descripción de los avances
+
+Durante la Semana 6 se continuó con el desarrollo del sistema web **AquaAlerta**, una plataforma comunitaria destinada al registro y seguimiento de problemas relacionados con la calidad y el suministro de agua.
+
+En esta etapa se implementaron las vistas, rutas URL, formularios y plantillas HTML necesarias para que los usuarios puedan interactuar con el sistema.
+
+También se desarrollaron y comprobaron las operaciones CRUD (Create, Read, Update y Delete), utilizando Django, Python, HTML y Bootstrap.
+
+## 2. Funcionalidades implementadas
+
+### Página principal
+- Presentación de la plataforma AquaAlerta.
+- Menú de navegación.
+- Visualización de estadísticas generales de reportes.
+- Acceso a las principales funciones del sistema.
+
+### Listado de reportes
+- Consulta de reportes registrados.
+- Visualización de título, categoría, ubicación, estado, prioridad y fecha.
+- Organización de los reportes por fecha de registro.
+
+### Registro de reportes
+Se desarrollaron dos formularios:
+
+**Reporte de calidad del agua:**
+- Título y descripción.
+- Categoría y ubicación.
+- Prioridad.
+- Tipo de contaminación.
+- Apariencia y olor del agua.
+
+**Reporte de servicio de agua:**
+- Título y descripción.
+- Categoría y ubicación.
+- Prioridad.
+- Tipo de problema.
+- Estado del suministro.
+- Detalle de la afectación.
+
+### Edición de reportes
+- Modificación de información existente.
+- Actualización del estado y prioridad.
+- Acceso restringido a usuarios administrativos.
+
+### Eliminación de reportes
+- Selección del reporte que se desea eliminar.
+- Pantalla de confirmación.
+- Eliminación del registro después de confirmar.
+- Acceso restringido a usuarios administrativos.
+
+## 3. Operaciones CRUD
+
+| Operación | Descripción | Resultado |
+|---|---|---|
+| CREATE | Registrar nuevos reportes de calidad o servicio de agua. | Funcionando |
+| READ | Consultar los reportes almacenados en el sistema. | Funcionando |
+| UPDATE | Modificar información de reportes existentes. | Funcionando |
+| DELETE | Eliminar reportes mediante una pantalla de confirmación. | Funcionando |
+
+Las cuatro operaciones fueron verificadas mediante pruebas realizadas desde la interfaz web.
+
+## 4. Vistas y rutas URL
+
+| Ruta | Funcionalidad |
+|---|---|
+| `/` | Página principal |
+| `/reportes/` | Listado de reportes |
+| `/reportes/nuevo/calidad/` | Registrar reporte de calidad del agua |
+| `/reportes/nuevo/servicio/` | Registrar reporte de servicio de agua |
+| `/reportes/editar/<id>/` | Editar un reporte |
+| `/reportes/eliminar/<id>/` | Eliminar un reporte |
+| `/admin/` | Panel de administración de Django |
+
+Las rutas se encuentran configuradas en `config/urls.py`.
+
+## 5. Archivos desarrollados y actualizados
+
+### Archivos Python
+
+- `reportes/views.py`: implementación de las vistas y operaciones CRUD.
+- `reportes/forms.py`: formularios para registrar y editar reportes.
+- `config/urls.py`: configuración de las rutas del sistema.
+
+### Plantillas HTML
+
+- `reportes/templates/reportes/base.html`: estructura principal y navegación.
+- `reportes/templates/reportes/inicio.html`: página de inicio.
+- `reportes/templates/reportes/lista_reportes.html`: tabla de reportes.
+- `reportes/templates/reportes/formulario_reporte.html`: formulario para crear y editar reportes.
+- `reportes/templates/reportes/confirmar_eliminacion.html`: confirmación de eliminación.
+
+## 6. Tecnologías utilizadas
+
+- **Python:** lenguaje de programación.
+- **Django:** framework para el desarrollo web.
+- **HTML:** estructura de las páginas.
+- **Bootstrap:** diseño de la interfaz gráfica.
+- **Git:** control de versiones.
+- **GitHub:** almacenamiento y colaboración en el repositorio.
+
+## 7. Pruebas realizadas
+
+Durante esta semana se efectuaron las siguientes pruebas:
+
+1. Acceso a la página principal.
+2. Navegación entre las secciones del sistema.
+3. Visualización del listado de reportes.
+4. Acceso a los formularios de calidad y servicio.
+5. Registro de un nuevo reporte de interrupción del suministro.
+6. Modificación del estado de un reporte existente.
+7. Visualización de la pantalla de confirmación de eliminación.
+8. Eliminación de un reporte y comprobación de que desapareció del listado.
+
+**Resultado general:** Las pruebas realizadas permitieron comprobar el funcionamiento de las vistas, formularios, navegación y operaciones CRUD implementadas.
+
+## 8. Control de acceso
+
+Para proteger las funciones administrativas, las vistas de edición y eliminación utilizan el decorador `staff_member_required` de Django.
+
+De esta manera, únicamente los usuarios con permisos administrativos pueden acceder a estas operaciones.
+
+## 9. Dificultades y soluciones
+
+**Organización de formularios:** Se revisó la estructura de las clases y las importaciones para corregir errores durante la implementación.
+
+**Configuración de URLs:** Se incorporaron nuevas rutas conservando el funcionamiento de las vistas existentes.
+
+**Control de permisos:** Se restringió la edición y eliminación de reportes a usuarios administrativos.
+
+**Sincronización con GitHub:** Se integraron los cambios del repositorio remoto mediante Git antes de publicar los avances de la Semana 6.
+
+## 10. Resultados de la Semana 6
+
+Al finalizar esta etapa, AquaAlerta cuenta con una interfaz web funcional que permite:
+
+- Registrar problemas de calidad del agua.
+- Registrar interrupciones y dificultades del suministro.
+- Consultar reportes comunitarios.
+- Actualizar la información de los reportes.
+- Eliminar registros mediante confirmación.
+- Navegar entre las diferentes secciones del sistema.
+
+Estos avances constituyen una base para continuar desarrollando las funcionalidades de seguimiento y gestión de reportes comunitarios.
+
+## 11. Próximas mejoras
+
+- Incorporar evidencias fotográficas.
+- Ampliar el seguimiento de los reportes.
+- Mejorar la validación de los formularios.
+- Continuar optimizando la interfaz.
+- Realizar pruebas adicionales de funcionamiento.
+
+---
+
+**Proyecto:** AquaAlerta  
+**Grupo:** Equipo 02  
+**Semana:** 6  
+**Fecha:** Octubre de 2026
