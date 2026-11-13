@@ -8,6 +8,17 @@ from .models import ReporteAgua, ReporteCalidadAgua, ReporteServicioAgua
 
 class ReporteCalidadAguaForm(forms.ModelForm):
 
+    fotografia = forms.FileField(
+        required=False,
+        label="Evidencia fotográfica",
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
+                "accept": "image/*",
+            }
+        ),
+    )
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
@@ -55,6 +66,17 @@ class ReporteCalidadAguaForm(forms.ModelForm):
 
 
 class ReporteServicioAguaForm(forms.ModelForm):
+
+    fotografia = forms.FileField(
+        required=False,
+        label="Evidencia fotográfica",
+        widget=forms.ClearableFileInput(
+            attrs={
+                "class": "form-control",
+                "accept": "image/*",
+            }
+        ),
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

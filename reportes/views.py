@@ -1,7 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.admin.views.decorators import staff_member_required
 
-from .models import ReporteAgua, ReporteCalidadAgua, ReporteServicioAgua
+from .models import (
+    ReporteAgua,
+    ReporteCalidadAgua,
+    ReporteServicioAgua,
+    Evidencia,
+)
 
 from .forms import (
     ReporteAguaForm,
@@ -9,10 +14,13 @@ from .forms import (
     ReporteServicioAguaForm,
 )
 
+# ==========================================
+# PAGINA PRINCIPAL
+# ==========================================
+
 
 def inicio(request):
     total_reportes = ReporteAgua.objects.count()
-
     total_calidad = ReporteCalidadAgua.objects.count()
     total_servicio = ReporteServicioAgua.objects.count()
 
@@ -25,6 +33,11 @@ def inicio(request):
     return render(request, "reportes/inicio.html", contexto)
 
 
+# ==========================================
+# LISTADO DE REPORTES
+# ==========================================
+
+
 def lista_reportes(request):
     reportes = ReporteAgua.objects.select_related(
         "categoria", "ubicacion", "usuario"
@@ -35,9 +48,15 @@ def lista_reportes(request):
     return render(request, "reportes/lista_reportes.html", contexto)
 
 
+# ==========================================
+# CREAR REPORTE DE CALIDAD DEL AGUA
+# ==========================================
+
+
 def crear_reporte_calidad(request):
+
     if request.method == "POST":
-        formulario = ReporteCalidadAguaForm(request.POST)
+        formulario = ReporteCalidadAguaForm(request.POST, request.FILES)
 
         if formulario.is_valid():
             reporte = formulario.save(commit=False)
@@ -46,6 +65,16 @@ def crear_reporte_calidad(request):
                 reporte.usuario = request.user
 
             reporte.save()
+
+            fotografia = formulario.cleaned_data.get("fotografia")
+
+            if fotografia:
+                Evidencia.objects.create(
+                    reporte=reporte,
+                    archivo=fotografia,
+                    descripcion="Fotografía de calidad del agua",
+                )
+
             return redirect("lista_reportes")
 
     else:
@@ -59,9 +88,15 @@ def crear_reporte_calidad(request):
     return render(request, "reportes/formulario_reporte.html", contexto)
 
 
+# ==========================================
+# CREAR REPORTE DE SERVICIO DE AGUA
+# ==========================================
+
+
 def crear_reporte_servicio(request):
+
     if request.method == "POST":
-        formulario = ReporteServicioAguaForm(request.POST)
+        formulario = ReporteServicioAguaForm(request.POST, request.FILES)
 
         if formulario.is_valid():
             reporte = formulario.save(commit=False)
@@ -70,6 +105,16 @@ def crear_reporte_servicio(request):
                 reporte.usuario = request.user
 
             reporte.save()
+
+            fotografia = formulario.cleaned_data.get("fotografia")
+
+            if fotografia:
+                Evidencia.objects.create(
+                    reporte=reporte,
+                    archivo=fotografia,
+                    descripcion="Fotografía del problema de suministro",
+                )
+
             return redirect("lista_reportes")
 
     else:
@@ -83,6 +128,11 @@ def crear_reporte_servicio(request):
     return render(request, "reportes/formulario_reporte.html", contexto)
 
 
+# ==========================================
+# EDITAR REPORTE
+# ==========================================
+
+
 @staff_member_required
 def editar_reporte(request, reporte_id):
     reporte = get_object_or_404(ReporteAgua, id=reporte_id)
@@ -93,6 +143,7 @@ def editar_reporte(request, reporte_id):
         if formulario.is_valid():
             formulario.save()
             return redirect("lista_reportes")
+
     else:
         formulario = ReporteAguaForm(instance=reporte)
 
@@ -102,6 +153,11 @@ def editar_reporte(request, reporte_id):
     }
 
     return render(request, "reportes/formulario_reporte.html", contexto)
+
+
+# ==========================================
+# ELIMINAR REPORTE
+# ==========================================
 
 
 @staff_member_required
