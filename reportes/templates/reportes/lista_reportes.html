@@ -6,7 +6,6 @@
 
 <div class="container my-5">
 
-    <!-- ENCABEZADO -->
     <div class="d-flex justify-content-between align-items-center mb-4">
         <div>
             <h2>💧 Reportes comunitarios</h2>
@@ -16,9 +15,7 @@
         </div>
     </div>
 
-    <!-- TABLA DE REPORTES -->
-
-    <!-- BOTONES PARA REPORTES CIUDADANOS -->
+    <!-- BOTONES PARA REGISTRAR REPORTES -->
     <div class="d-flex flex-wrap gap-3 mb-4">
 
         <a href="{% url 'crear_reporte_calidad' %}" class="btn btn-primary">
@@ -33,12 +30,10 @@
 
     <div class="card shadow-sm border-0">
         <div class="card-body">
-
             <div class="table-responsive">
 
                 <table class="table table-striped table-hover align-middle">
 
-                    <!-- ENCABEZADOS -->
                     <thead class="table-primary">
                         <tr>
                             <th>ID</th>
@@ -48,37 +43,27 @@
                             <th>Estado</th>
                             <th>Prioridad</th>
                             <th>Fecha</th>
+                            <th>📷 Evidencias</th>
 
-                            <!-- SOLO ADMINISTRADORES -->
                             {% if request.user.is_staff %}
                             <th>Acciones</th>
                             {% endif %}
                         </tr>
                     </thead>
 
-                    <!-- CONTENIDO -->
                     <tbody>
 
                         {% for reporte in reportes %}
 
                         <tr>
+                            <td>{{ reporte.id }}</td>
 
-                            <!-- ID -->
-                            <td>
-                                {{ reporte.id }}
-                            </td>
+                            <td>{{ reporte.titulo }}</td>
 
-                            <!-- TÍTULO -->
-                            <td>
-                                {{ reporte.titulo }}
-                            </td>
-
-                            <!-- CATEGORÍA -->
                             <td>
                                 {{ reporte.categoria.nombre|default:"Sin categoría" }}
                             </td>
 
-                            <!-- UBICACIÓN -->
                             <td>
                                 {% if reporte.ubicacion %}
                                 {{ reporte.ubicacion.comunidad }},
@@ -88,91 +73,84 @@
                                 {% endif %}
                             </td>
 
-                            <!-- ESTADO -->
                             <td>
                                 {% if reporte.estado == "Pendiente" %}
-
                                 <span class="badge bg-warning text-dark">
                                     {{ reporte.estado }}
                                 </span>
-
                                 {% elif reporte.estado == "En proceso" %}
-
                                 <span class="badge bg-primary">
                                     {{ reporte.estado }}
                                 </span>
-
                                 {% elif reporte.estado == "Resuelto" %}
-
                                 <span class="badge bg-success">
                                     {{ reporte.estado }}
                                 </span>
-
                                 {% else %}
-
                                 <span class="badge bg-secondary">
                                     {{ reporte.estado }}
                                 </span>
-
                                 {% endif %}
                             </td>
 
-                            <!-- PRIORIDAD -->
                             <td>
                                 {% if reporte.prioridad == "Alta" %}
-
-                                <span class="badge bg-danger">
-                                    Alta
-                                </span>
-
+                                <span class="badge bg-danger">Alta</span>
                                 {% elif reporte.prioridad == "Media" %}
-
-                                <span class="badge bg-warning text-dark">
-                                    Media
-                                </span>
-
+                                <span class="badge bg-warning text-dark">Media</span>
                                 {% else %}
-
-                                <span class="badge bg-success">
-                                    Baja
-                                </span>
-
+                                <span class="badge bg-success">Baja</span>
                                 {% endif %}
                             </td>
 
-                            <!-- FECHA -->
                             <td>
                                 {{ reporte.fecha_reporte|date:"d/m/Y H:i" }}
                             </td>
 
-                            <!-- BOTÓN EDITAR: SOLO ADMINISTRADORES -->
-                            {% if request.user.is_staff %}
+                            <!-- FOTOGRAFÍAS DEL REPORTE -->
+                            <td>
+                                {% for evidencia in reporte.evidencias.all %}
 
+                                {% if evidencia.archivo %}
+                                <a href="{{ evidencia.archivo.url }}" target="_blank" rel="noopener noreferrer"
+                                    class="d-inline-block me-2 mb-2" title="Ver fotografía">
+
+                                    <img src="{{ evidencia.archivo.url }}" alt="Evidencia del reporte {{ reporte.id }}"
+                                        class="img-thumbnail" style="width: 75px; height: 75px; object-fit: cover;">
+
+                                </a>
+                                {% endif %}
+
+                                {% empty %}
+                                <span class="text-muted">
+                                    Sin evidencia
+                                </span>
+                                {% endfor %}
+                            </td>
+
+                            <!-- ACCIONES SOLO PARA ADMINISTRADORES -->
+                            {% if request.user.is_staff %}
                             <td>
                                 <div class="d-flex gap-2">
 
-                                    <!-- BOTÓN EDITAR -->
                                     <a href="{% url 'editar_reporte' reporte.id %}" class="btn btn-warning btn-sm">
                                         ✏️ Editar
                                     </a>
 
-                                    <!-- BOTÓN ELIMINAR -->
                                     <a href="{% url 'eliminar_reporte' reporte.id %}" class="btn btn-danger btn-sm">
                                         🗑️ Eliminar
                                     </a>
 
                                 </div>
                             </td>
-
                             {% endif %}
 
                         </tr>
 
                         {% empty %}
 
-                        <!-- CUANDO NO EXISTEN REPORTES -->
                         <tr>
-                            <td colspan="{% if request.user.is_staff %}8{% else %}7{% endif %}"
+                            <td colspan="{% if request.user.is_staff %}9{% else %}8{% endif %}"
                                 class="text-center py-4">
                                 No hay reportes registrados.
                             </td>
@@ -185,17 +163,13 @@
                 </table>
 
             </div>
-
         </div>
     </div>
 
-    <!-- BOTÓN REGRESAR -->
     <div class="mt-4">
-
         <a href="{% url 'inicio' %}" class="btn btn-secondary">
             ← Volver al inicio
         </a>
-
     </div>
 
 </div>

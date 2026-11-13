@@ -8,3 +8,8 @@ db.sqlite3
 !.env.example
 .vscode/
 staticfiles/
+# Fotografías de reportes
+/media/
+
+# Archivos generados por Django
+/staticfiles/
