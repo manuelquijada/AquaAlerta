@@ -22,6 +22,9 @@ class ReporteCalidadAguaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields["categoria"].required = True
+        self.fields["ubicacion"].required = True
+
         self.fields["categoria"].empty_label = "Seleccione una categoría"
         self.fields["ubicacion"].empty_label = "Seleccione una ubicación"
 
@@ -81,6 +84,9 @@ class ReporteServicioAguaForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+        self.fields["categoria"].required = True
+        self.fields["ubicacion"].required = True
+
         self.fields["categoria"].empty_label = "Seleccione una categoría"
         self.fields["ubicacion"].empty_label = "Seleccione una ubicación"
 
@@ -130,6 +136,9 @@ class ReporteAguaForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+        self.fields["categoria"].required = True
+        self.fields["ubicacion"].required = True
 
         self.fields["categoria"].empty_label = "Seleccione una categoría"
         self.fields["ubicacion"].empty_label = "Seleccione una ubicación"
