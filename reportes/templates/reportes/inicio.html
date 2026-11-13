@@ -4,11 +4,74 @@
 
 {% block estilos %}
 <style>
+    /* GOTAS DE AGUA ANIMADAS */
+    .hero {
+        position: relative;
+        overflow: hidden;
+        isolation: isolate;
+    }
+
+    .hero::before,
+    .hero::after {
+        content: "💧";
+        position: absolute;
+        top: -70px;
+        font-size: 35px;
+        opacity: 0.25;
+        pointer-events: none;
+        z-index: 0;
+        animation: caerGota 5s linear infinite;
+    }
+
+    .hero::before {
+        left: 20%;
+    }
+
+    .hero::after {
+        left: 75%;
+        font-size: 55px;
+        animation-delay: -3s;
+        animation-duration: 9s;
+    }
+
+    @keyframes caerGota {
+        0% {
+            transform: translateY(-80px) rotate(-10deg);
+            opacity: 0;
+        }
+
+        20% {
+            opacity: 0.35;
+        }
+
+        80% {
+            opacity: 0.35;
+        }
+
+        100% {
+            transform: translateY(450px) rotate(15deg);
+            opacity: 0;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+        .hero::before,
+        .hero::after {
+            animation: none;
+        }
+    }
+
     .hero {
         text-align: center;
         padding: 75px 20px;
         background: linear-gradient(135deg, #087da4, #27b6cf);
         color: white;
+    }
+
+    .hero>.container {
+        position: relative;
+        z-index: 1;
     }
 
     .hero h2 {
